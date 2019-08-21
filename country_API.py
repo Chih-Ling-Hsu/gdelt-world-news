@@ -15,6 +15,7 @@ def country_tab(country_name):
 
 	return render_template('country_search.html', country=country_name)
 
+@country_api.route('/country/<country_name>/<sentiment_type>', methods=['GET', 'POST'])
 def filter_by_sentiment(country_name, sentiment_type):
 	'''
 	PARAM sentiment_type
@@ -33,5 +34,7 @@ def filter_by_sentiment(country_name, sentiment_type):
 		df = df[(df['neg'] > 0.093440) & df['pos'] < df['neg']].sort_values(by='neg', ascending=False)
 	elif sentiment_type == 2:
 		df = df[(df['pos'] < 0.104787) & (df['neg'] < 0.093440)].sort_values(by='neu', ascending=False)
-		
+
 	data = df[use_cols].to_dict('records')
+	text = ' '.join(data['keyword'].tolist())
+	return render_template('country_search.html', country=country_name, text=text)
