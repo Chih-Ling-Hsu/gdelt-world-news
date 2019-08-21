@@ -11,14 +11,14 @@
 
 {% block header %}
   <li class="nav-item">
-    <a class="nav-link" href="#firstSection">Search by Country</a>  
+    <a class="nav-link" href="#firstSection">Search by Country</a>
   </li>
 
-{% endblock %} 
+{% endblock %}
 
 {% block headerMobile %}
   <li class="nav-item">
-    <a class="nav-link" href="#firstSection">Search by Country</a>  
+    <a class="nav-link" href="#firstSection">Search by Country</a>
   </li>
 {% endblock %}
 
@@ -34,14 +34,14 @@
     <a href="#firstSection" class="btn btn-common"> RESULT FOR {{country}}</a>
   </div>
 {% endblock %}
-    
+
 {% block firstSection %}
   <h2 class="section-title">
     {{country}}
   </h2>
 
   <form action = " " method="post" enctype = "multipart/form-data" onsubmit="loading()">
-    
+
     <div class="row">
       <div class="col-md-12">
       		<form class="pure-form" action = " " method = "post" enctype = "multipart/form-data" onsubmit="loading()">
@@ -49,11 +49,16 @@
       		</form>
       		<div id="chartdiv"></div>
       </div>
-      
+
 
     </div>
 
 
+{% endblock %}
+
+{% block secondSection %}
+<iframe src="https://api.gdeltproject.org/api/v2/doc/doc?query=(%22islamic%20state%22%20OR%20isis%20OR%20daesh)&mode=artlist&maxrecords=100&timespan=1week&sourcecountry={{country}}" frameborder="0" allowfullscreen
+    style="top:0;left:0;width:100%;height:100%;"></iframe>
 {% endblock %}
 
 
@@ -64,4 +69,3 @@
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 <script src="{{ url_for('static', filename='js/word-cloud.js') }}"></script>
 {% endblock %}
-

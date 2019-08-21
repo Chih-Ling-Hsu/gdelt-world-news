@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>WROG</title>
-    
-    
+
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <!-- Fonts -->
@@ -24,18 +24,18 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css') }}">
-      
+
     {% block stylesheets %}{% endblock %}
 
 
-      
+
   </head>
     <style>
-        
+
         .intro {
         background: url("{{ url_for('static', filename='img/main.jpg') }}") no-repeat;
-         }  
-        
+         }
+
 			* {
 				box-sizing: border-box;
 				-moz-box-sizing: border-box;
@@ -46,14 +46,14 @@
 				padding: 5px;
 				text-align:center;
 			}
-    
+
     			#container-3D {
 				position: absolute;
 				top: 500px; width: 100%;
 				z-index: 9999;
 				padding: 3em 0 0 0;
 			}
-    
+
     			#c {
 				position: absolute;
 				left: 0;
@@ -62,7 +62,7 @@
                 border: thin solid #aaaaaa;
 			}
 
-    
+
 			.list-item {
 				display: inline-block;
 				margin: 1em;
@@ -104,7 +104,7 @@
     }
 
     /* Creates a small triangle extender for the tooltip */
-    .d3-tip:after {      
+    .d3-tip:after {
       box-sizing: border-box;
       display: inline;
       font-size: 8px;
@@ -113,7 +113,7 @@
       color: rgba(0, 0, 0, 0.6);
       position: absolute;
       pointer-events: none;
-      
+
     }
 
     /* Northward tooltips */
@@ -172,12 +172,12 @@
                 <a class="nav-link" href="#header-wrap">Top of the page</a>
               </li>
                 {% block header %}{% endblock %}
-              
+
             </ul>
           </div>
-        </div> 
+        </div>
         <button class="close-button" id="close-button"><i class="lni-close"></i></button>
-      </div>  
+      </div>
 
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar menu-bg">
@@ -214,9 +214,9 @@
       </nav>
       <!-- Navbar End -->
     </header>
-    
-    <div class="content-wrapper">  
-      
+
+    <div class="content-wrapper">
+
     <!-- Intro Section Start -->
     <section class="intro">
       <div class="container">
@@ -231,22 +231,22 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-8 col-xs-12 text-center">
-            {% block firstSection %}{% endblock %} 
+            {% block firstSection %}{% endblock %}
 
-          </div>            
+          </div>
         </div>
-        
+
       </div>
     </section>
 
     <!-- Second Section Start -->
-    <section id="secondSection" class="section-padding">
+    <section id="secondSection" class="">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-8 col-lg-8 col-xs-12 text-center">
+          <div class="col-md-12 col-lg-12 col-xs-12 text-center">
               {% block secondSection %}{% endblock %}
 
-          </div>            
+          </div>
         </div>
       </div>
     </section>
@@ -258,7 +258,7 @@
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-8 col-xs-12 text-center">
             {% block thirdSection %}{% endblock %}
-          </div>            
+          </div>
         </div>
       </div>
     </section>
@@ -268,10 +268,10 @@
     <a href="#" class="back-to-top">
       <i class="lni-chevron-up"></i>
     </a>
-        
+
       </div>
     </div> <!-- end of allContentPage -->
-          
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
@@ -301,10 +301,3 @@
 {% block scripts %}{% endblock %}
 </body>
 </html>
-
-
-
-
-
-
-
