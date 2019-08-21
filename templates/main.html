@@ -42,10 +42,19 @@
     </div>
   </form>
 
+  <meta id="my-data" data-name="{{text}}">
+
 {% endblock %}
 
+{% block secondSection %}
+
+<div id="chartdiv"></div>
+
+{% endblock %}
 
 {% block scripts %}
+
+
 <script>
 var format = d3.format(",");
 
@@ -135,6 +144,33 @@ function ready(error, data, population) {
       .attr("class", "names")
       .attr("d", path);
 }
+
+</script>
+
+<script>
+  // Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+
+var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
+series.accuracy = 4;
+series.step = 15;
+series.rotationThreshold = 0.7;
+series.maxCount = 200;
+series.minWordLength = 2;
+series.labels.template.tooltipText = "{word}: {value}";
+series.fontFamily = "Courier New";
+series.maxFontSize = am4core.percent(50);
+
+var images_numbers = eval($('#my-data').data());
+series.text = images_numbers["name"];
 
 </script>
 {% endblock %}

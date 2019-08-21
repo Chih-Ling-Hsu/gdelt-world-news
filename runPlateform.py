@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-from os import popen
+import pandas as pd
 
 from flask import Flask, request, redirect, url_for, render_template
 
@@ -23,7 +23,11 @@ app.register_blueprint(country_api)
 @app.route("/", methods=["GET", "POST"])
 def main_tab():
 	
-	return render_template("main.html")
+	df = pd.read_csv('static/data/text.csv')
+	text = ' '.join(list(df['keyword']))
+	text = text.replace('_', '')
+
+	return render_template("main.html", text=text)
 
 if __name__ == "__main__":
 	# load_CBIR()
