@@ -57,6 +57,58 @@
 
 {% endblock %}
 
+{% block secondSection %}
+  <h2 class="section-title">
+    News
+  </h2>
+    <h5 class="subtitle"> Choose a feeling if you want </h5>
+  </h2>
+
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+			<form action = " " method="post" enctype = "multipart/form-data" onsubmit="loading()">
+
+			  <div>
+			    <input type="radio" id="positive"
+			     name="feeling" value="positive">
+			    <label for="positive">Positive</label>
+
+			    <input type="radio" id="negative"
+			     name="feeling" value="negative">
+			    <label for="negative">Negative</label>
+
+			    <input type="radio" id="neutral"
+			     name="feeling" value="neutral">
+			    <label for="neutral">Neutral</label>
+			  </div>
+			  <div>
+			  	<button class="btn btn-common" type="submit"> Check feelings</button>
+			  </div>
+			</form>
+
+			</div>
+						
+			{% for url_img, url_new in url_img_text %}
+
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						<div class="thirdSection-item text-center">
+							<div class="thirdSection-img">
+								<img class="img-fluid" src = "{{url_img}}" alt="">
+								<div class="thirdSection-overlay">
+									<div class="overlay-social-icon text-center">
+										<ul class="social-icons">
+											<li><a href="{{url_new}}" target="_blank"><button class="btn btn-common"> 
+                                                Read</button></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>       
+			{% endfor %}
+		</div> 
+{% endblock %}
+
 
 {% block scripts %}
 <script>

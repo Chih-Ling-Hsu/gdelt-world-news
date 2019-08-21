@@ -13,23 +13,36 @@ country_api = Blueprint('country_api', __name__)
 def country_tab(country_name):
 	print('country_api tab-----------------')
 
+	df = pd.read_csv('static/data/text.csv')
+	df = df[df['sourcecountry'] == country_name]
+
+
 	if request.method == 'POST':
 		if 'return_main_tab' in request.form:
 			return redirect(url_for('main_tab'))
+		if 'feeling' in request.form:
+			if request.form['feeling'] == 'positive':
+				df = df[df['pos'] > 0.5]
+			elif request.form['feeling'] == 'negative':
+				df = df[df['neg'] > 0.5]
+			elif request.form['feeling'] == 'neutral':
+				df = df[df['neu'] > 0.5]
 
-	df = pd.read_csv('static/data/text.csv')
 	text = ' '.join(list(df['keyword']))
 	text = text.replace('_', '')
 
-	return render_template('country_search.html', country=country_name, text=text)
+	df = df[:min(100, len(df))]
+
+	return render_template('country_search.html', country=country_name, text=text, 
+		url_img_text=zip(df['socialimage'], df['url']))
 
 @country_api.route('/country/<country_name>/<sentiment_type>', methods=['GET', 'POST'])
 def filter_by_sentiment(country_name, sentiment_type):
 	'''
 	PARAM sentiment_type
-		0 - neu
-		1 - pos
-		2 - neg
+		0 - pos
+		1 - neg
+		2 - neu
 	'''
 	df = pd.read_csv('data/text.csv')
 	use_cols = ['title', 'url', 'pos', 'neg', 'compound', 'country', 'socialimage', 'keyword']
