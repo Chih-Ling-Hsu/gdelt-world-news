@@ -11,14 +11,14 @@
 
 {% block header %}
   <li class="nav-item">
-    <a class="nav-link" href="#firstSection">Search by Country</a>  
+    <a class="nav-link" href="#firstSection">Search by Country</a>
   </li>
 
-{% endblock %} 
+{% endblock %}
 
 {% block headerMobile %}
   <li class="nav-item">
-    <a class="nav-link" href="#firstSection">Search by Country</a>  
+    <a class="nav-link" href="#firstSection">Search by Country</a>
   </li>
 {% endblock %}
 
@@ -34,14 +34,14 @@
     <a href="#firstSection" class="btn btn-common"> RESULT FOR {{country}}</a>
   </div>
 {% endblock %}
-    
+
 {% block firstSection %}
   <h2 class="section-title">
     {{country}}
   </h2>
 
   <form action = " " method="post" enctype = "multipart/form-data" onsubmit="loading()">
-    
+
     <div class="row">
       <div class="col-md-12">
       		<form class="pure-form" action = " " method = "post" enctype = "multipart/form-data" onsubmit="loading()">
@@ -49,7 +49,7 @@
       		</form>
       		<div id="chartdiv"></div>
       </div>
-      
+
 
     </div>
 
@@ -87,7 +87,7 @@
 			</form>
 
 			</div>
-						
+
 			{% for url_img, url_new in url_img_text %}
 
 					<div class="col-sm-6 col-md-6 col-lg-3">
@@ -97,14 +97,14 @@
 								<div class="thirdSection-overlay">
 									<div class="overlay-social-icon text-center">
 										<ul class="social-icons">
-											<li><a href="{{url_new}}" target="_blank"><button class="btn btn-common"> 
+											<li><a href="{{url_new}}" target="_blank"><button class="btn btn-common">
                                                 Read</button></a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>       
+					</div>
 			{% endfor %}
 		</div> 
 {% endblock %}
@@ -136,4 +136,3 @@ series.text = images_numbers["name"];
 </script>
 
 {% endblock %}
-
