@@ -6,6 +6,12 @@ Din Löpsedel Fika
 
 ---
 
+### Customized News Retrieval System
+
+for news around the World
+
+---
+
 <!--## WROG
 <br></br>
 
@@ -91,3 +97,5 @@ news stories on cookies that I've been interested in
 # Future Work
 
 Storytelling feature
+
+![](images/future.png)
