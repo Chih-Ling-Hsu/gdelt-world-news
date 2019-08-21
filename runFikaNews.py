@@ -11,14 +11,6 @@ from country_API import country_api
 app = Flask(__name__, static_url_path="/static", static_folder="static")
 
 app.register_blueprint(country_api)
-# app.register_blueprint(information_api)
-# app.register_blueprint(search_by_text_api)
-# app.register_blueprint(preview_img_LV_api)
-# app.register_blueprint(search_by_img_api)
-# app.register_blueprint(tsne_api)
-# app.register_blueprint(plot_3D_api)
-# app.register_blueprint(classification_api)
-
 
 @app.route("/", methods=["GET", "POST"])
 def main_tab():
