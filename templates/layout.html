@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>WROG</title>
+    
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/line-icons.css') }}">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/slicknav.css') }}">
+    <!-- Off Canvas Menu -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/menu_sideslide.css') }}">
+    <!-- Color Switcher -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vegas.min.css') }}">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css') }}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css') }}">
+      
+    {% block stylesheets %}{% endblock %}
+
+
+      
+  </head>
+    <style>
+        
+        .intro {
+        background: url("{{ url_for('static', filename='img/main.jpg') }}") no-repeat;
+         }  
+        
+			* {
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+			}
+    			#info {
+				position: absolute;
+				top: 0; width: 100%;
+				padding: 5px;
+				text-align:center;
+			}
+    
+    			#container-3D {
+				position: absolute;
+				top: 500px; width: 100%;
+				z-index: 9999;
+				padding: 3em 0 0 0;
+			}
+    
+    			#c {
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 1000px;
+                border: thin solid #aaaaaa;
+			}
+
+    
+			.list-item {
+				display: inline-block;
+				margin: 1em;
+				padding: 1em;
+				box-shadow: 1px 2px 4px 0px rgba(0,0,0,0.25);
+			}
+
+			.list-item .scene {
+				width: 100px;
+				height: 100px;
+			}
+
+			.list-item .description {
+				color: #888;
+				font-family: sans-serif;
+				font-size: large;
+				width: 100px;
+				margin-top: 0.5em;
+			}
+
+
+
+      .names {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  }
+
+    /* Tooltip CSS */
+    .d3-tip {
+    line-height: 1.5;
+    font-weight: 400;
+    font-family:"avenir next", Arial, sans-serif;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFA500;
+    border-radius: 1px;
+    pointer-events: none;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {      
+      box-sizing: border-box;
+      display: inline;
+      font-size: 8px;
+      width: 100%;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      pointer-events: none;
+      
+    }
+
+    /* Northward tooltips */
+    .d3-tip.n:after {
+      content: "\25BC";
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+      text-align: center;
+    }
+
+    /* Eastward tooltips */
+    .d3-tip.e:after {
+      content: "\25C0";
+      margin: -4px 0 0 0;
+      top: 50%;
+      left: -8px;
+    }
+
+    /* Southward tooltips */
+    .d3-tip.s:after {
+      content: "\25B2";
+      margin: 0 0 1px 0;
+      top: -8px;
+      left: 0;
+      text-align: center;
+    }
+
+    /* Westward tooltips */
+    .d3-tip.w:after {
+      content: "\25B6";
+      margin: -4px 0 0 -1px;
+      top: 50%;
+      left: 100%;
+    }
+
+/*    text{
+      pointer-events:none;
+    }*/
+
+    .details{
+      color:white;
+    }
+
+    </style>
+  <body>
+
+    <div id="allContentPage">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <div class="menu-wrap">
+        <div class="menu navbar">
+          <div class="menu-list navbar-collapse">
+            <ul class="onepage-nev navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#header-wrap">Top of the page</a>
+              </li>
+                {% block header %}{% endblock %}
+              
+            </ul>
+          </div>
+        </div> 
+        <button class="close-button" id="close-button"><i class="lni-close"></i></button>
+      </div>  
+
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar menu-bg">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              <span class="lni-menu"></span>
+              <span class="lni-menu"></span>
+              <span class="lni-menu"></span>
+            </button>
+            <!--<a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a> -->
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+              <li class="nav-item" id="open-button">
+                <a class="nav-link">
+                  <i class="lni-menu"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+          <li>
+            <a href="#header-wrap">Top of the page</a>
+          </li>
+          {% block headerMobile %}{% endblock %}
+        </ul>
+        <!-- Mobile Menu End -->
+      </nav>
+      <!-- Navbar End -->
+    </header>
+    
+    <div class="content-wrapper">  
+      
+    <!-- Intro Section Start -->
+    <section class="intro">
+      <div class="container">
+        <div class="row text-center">
+          {% block startBlock %}{% endblock %}
+        </div>
+      </div>
+    </section>
+    <!-- Intro Section End -->
+
+    <section id="firstSection" class="section-padding" >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-8 col-xs-12 text-center">
+            {% block firstSection %}{% endblock %} 
+
+          </div>            
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Second Section Start -->
+    <section id="secondSection" class="section-padding">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-8 col-xs-12 text-center">
+              {% block secondSection %}{% endblock %}
+
+          </div>            
+        </div>
+      </div>
+    </section>
+    <!-- Second Section End -->
+
+    <!-- Third Section Start -->
+    <section id="thirdSection" class="section-padding">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-8 col-xs-12 text-center">
+            {% block thirdSection %}{% endblock %}
+          </div>            
+        </div>
+      </div>
+    </section>
+    <!-- Third Section End -->
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+      <i class="lni-chevron-up"></i>
+    </a>
+        
+      </div>
+    </div> <!-- end of allContentPage -->
+          
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vegas.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+<script src="{{ url_for('static', filename='js/classie.js') }}"></script>
+<script src="{{ url_for('static', filename='js/scrolling-nav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.nav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.slicknav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/form-validator.min.js') }}"></script>
+
+
+
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="{{ url_for('static', filename='js/d3-tip.js') }}"></script>
+
+
+
+{% block scripts %}{% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+

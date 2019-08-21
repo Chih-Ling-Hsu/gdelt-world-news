@@ -1,0 +1,83 @@
+
+.h2 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	text-indent: 25px;
+	font-size: 20pt;
+	text-align: center;
+}
+
+.container {
+	display: table;
+	position: relative;
+	margin-left: 100px;
+	background-color: Transparent; 
+	border: none; 
+	outline: none;
+	font-size: 20px;
+}
+
+.image {
+	opacity: 1;
+	transition: .5s ease;
+	backface-visibility: hidden;
+	display: block;
+}
+
+.middle {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.container:hover .image {
+	opacity: 0.3;
+}
+
+.container:hover .middle {
+ 	opacity: 1;
+}
+
+.key {
+	position: relative; 
+	margin-top: 5px;
+	text-indent: 50px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+
+button[name=search_by_text] {
+	background-color: Transparent; 
+	border: none; 
+	outline: none;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px; 
+	font-size: 20px;
+	color:blue;
+}
+
+.load{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    background: url(images/loader-64x/Preloader_3.gif) center no-repeat;
+}
+
+.blur{
+    filter: blur(2px);
+    background-color: #ccc;
+}
+
+
+
+
+

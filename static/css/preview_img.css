@@ -1,0 +1,25 @@
+.queryimg {
+	display: table;
+	text-align:center; 
+	position:absolute; 
+	left:50px; 
+	top:170px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.load {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    background: url(images/loader-64x/Preloader_3.gif) center no-repeat;
+}
+
+.body{
+    filter: blur(2px);
+    background-color: #ccc;
+}

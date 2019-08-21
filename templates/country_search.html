@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block stylesheets %}
+  <style>html, body, #container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}</style>
+{% endblock %}
+
+{% block header %}
+  <li class="nav-item">
+    <a class="nav-link" href="#firstSection">Search by Country</a>  
+  </li>
+
+{% endblock %} 
+
+{% block headerMobile %}
+  <li class="nav-item">
+    <a class="nav-link" href="#firstSection">Search by Country</a>  
+  </li>
+{% endblock %}
+
+{% block startBlock %}
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="heading-count">
+        <h3> WROG </h3>
+          <h4> Where Are the wOrld Going <br>
+          Customized Retrieval System for news in the World</h4>
+    </div>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <a href="#firstSection" class="btn btn-common"> RESULT FOR {{country}}</a>
+  </div>
+{% endblock %}
+    
+{% block firstSection %}
+  <h2 class="section-title">
+    {{country}}
+  </h2>
+
+  <form action = " " method="post" enctype = "multipart/form-data" onsubmit="loading()">
+    
+    <div class="row">
+      <div class="col-md-12">
+      		<form class="pure-form" action = " " method = "post" enctype = "multipart/form-data" onsubmit="loading()">
+      			 <button class="btn btn-border" type = "submit" name = "return_main_tab"> HOME PAGE </button>
+      		</form>
+      		<div id="chartdiv"></div>
+      </div>
+      
+
+    </div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="{{ url_for('static', filename='js/word-cloud.js') }}"></script>
+{% endblock %}
+
