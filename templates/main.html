@@ -2,50 +2,56 @@
 
 {% block header %}
   <li class="nav-item">
-    <a class="nav-link" href="#firstSection">Search by Country</a>  
+    <a class="nav-link" href="#firstSection">Search by Country</a>
   </li>
 
-{% endblock %} 
+{% endblock %}
 
 {% block headerMobile %}
   <li class="nav-item">
-    <a class="nav-link" href="#firstSection">Search by Country</a>  
+    <a class="nav-link" href="#firstSection">Search by Country</a>
   </li>
 {% endblock %}
 
 {% block startBlock %}
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="heading-count">
-        <h3> WROG </h3>
-          <h4> Where Are the wOrld Going <br>
-          Customized Retrieval System for news in the World</h4>
+        <h2> Fika news </h2>
+          <h4> Customized Retrieval System for news in the World</h4>
     </div>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12">
     <a href="#firstSection" class="btn btn-common">CHECK THE WORLD MAP</a>
   </div>
 {% endblock %}
-    
+
 {% block firstSection %}
   <h2 class="section-title">
     Search by Country
   </h2>
 
   <form action = " " method="post" enctype = "multipart/form-data" onsubmit="loading()">
-    
+
     <div class="row">
       <div class="col-md-12" id="map-div"></div>
-      <!-- thirdSection form
-      
-
-              <iframe width='100%' height='520' frameborder='0' src='https://gdelt.carto.com/viz/b15eddb4-f806-11e4-9b7d-0e9d821ea90d/embed_map' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>  -->
     </div>
   </form>
 
+  <meta id="my-data" data-name="{{text}}">
+
 {% endblock %}
 
+{% block secondSection %}
+  <h2 class="section-title">
+    Word Cloud
+  </h2>
+<div id="chartdiv"></div>
+
+{% endblock %}
 
 {% block scripts %}
+
+
 <script>
 var format = d3.format(",");
 
@@ -84,8 +90,8 @@ svg.call(tip);
 
 queue()
     //.defer(d3.json, "world_countries.json")
-    .defer(d3.json, "{{ url_for('static', filename='world_countries.json') }}")
-    .defer(d3.tsv, "{{ url_for('static', filename='world_population.tsv') }}")
+    .defer(d3.json, "{{ url_for('static', filename='data/world_countries.json') }}")
+    .defer(d3.tsv, "{{ url_for('static', filename='data/world_population.tsv') }}")
     //.defer(d3.tsv, "world_population.tsv")
     .await(ready);
 
@@ -137,5 +143,31 @@ function ready(error, data, population) {
 }
 
 </script>
-{% endblock %}
 
+<script>
+  // Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+
+var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
+series.accuracy = 4;
+series.step = 15;
+series.rotationThreshold = 0.7;
+series.maxCount = 200;
+series.minWordLength = 2;
+series.labels.template.tooltipText = "{word}: {value}";
+series.fontFamily = "Courier New";
+series.maxFontSize = am4core.percent(50);
+
+var images_numbers = eval($('#my-data').data());
+series.text = images_numbers["name"];
+
+</script>
+{% endblock %}
